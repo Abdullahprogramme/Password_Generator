@@ -61,6 +61,8 @@ export default function ComboBox() {
     return (
         <div>
             <Card sx={{ 
+                position: 'sticky', // Add this line
+                top: 0,
                 marginBottom: 1, 
                 marginTop: 1, 
                 backgroundColor: '#A1C398', 
@@ -98,6 +100,9 @@ export default function ComboBox() {
             </Card>
 
             <Card sx={{ 
+                position: 'sticky',
+                top: 0,
+                zIndex: 1,
                 marginBottom: 0, 
                 marginTop: 2, 
                 backgroundColor: '#A1C398', 
@@ -112,7 +117,7 @@ export default function ComboBox() {
                 },}} variant='default'>
                 <CardContent sx={{ padding: 2, justifyContent: 'center', alignItems: 'center' }}>
                 <Autocomplete
-                    disablePortal
+                    disablePortal={false}
                     isOptionEqualToValue={(option, value) => option.label === value.label}
                     id="combo-box-demo"
                     options={passwords}
