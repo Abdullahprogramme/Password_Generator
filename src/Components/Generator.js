@@ -102,7 +102,6 @@ export default function ComboBox() {
             <Card sx={{ 
                 position: 'sticky',
                 top: 0,
-                zIndex: 1,
                 marginBottom: 0, 
                 marginTop: 2, 
                 backgroundColor: '#A1C398', 
