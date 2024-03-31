@@ -8,6 +8,10 @@ import Checkbox from '@mui/material/Checkbox';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import RefreshIcon from '@mui/icons-material/Refresh';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import IconButton from '@mui/material/IconButton';
+import Tooltip from '@mui/material/Tooltip';
+
 
 // Password generator function
 function generatePasswords(options) {
@@ -115,27 +119,38 @@ export default function ComboBox() {
                     boxShadow: '0 3px 5px 4px rgba(0, 0, 0, .3)',
                 },}} variant='default'>
                 <CardContent sx={{ padding: 2, justifyContent: 'center', alignItems: 'center' }}>
-                <Autocomplete
-                    disablePortal={false}
-                    isOptionEqualToValue={(option, value) => option.label === value.label}
-                    id="combo-box-demo"
-                    options={passwords}
-                    value={value}
-                    onChange={(event, newValue) => {
-                        setValue(newValue);
-                    }}
-                    sx={{ 
-                        width: 200, 
-                        marginLeft: 'auto', 
-                        marginRight: 'auto', 
-                        backgroundColor: '#789461',
-                        '& .MuiAutocomplete-paper': {
-                            maxHeight: 144, // Adjust this value as needed
-                            overflow: 'auto',
-                        },
-                    }}
-                    renderInput={(params) => <TextField {...params} label="Password" />}
-                />
+                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                        <Autocomplete
+                            disablePortal={false}
+                            isOptionEqualToValue={(option, value) => option.label === value.label}
+                            id="combo-box-demo"
+                            options={passwords}
+                            value={value}
+                            onChange={(event, newValue) => {
+                                setValue(newValue);
+                            }}
+                            sx={{ 
+                                width: 200, 
+                                marginLeft: 'auto', 
+                                marginRight: 'auto', 
+                                backgroundColor: '#789461',
+                                '& .MuiAutocomplete-paper': {
+                                    maxHeight: 96, // Adjust this value as needed
+                                    overflow: 'auto',
+                                },
+                            }}
+                            renderInput={(params) => <TextField {...params} label="Password" />}
+                        />
+                        <Tooltip title="Copy">
+                            <IconButton
+                                onClick={() => {
+                                    navigator.clipboard.writeText(value ? value.label : '');
+                                }}
+                            >
+                                <ContentCopyIcon />
+                            </IconButton>
+                        </Tooltip>
+                    </Box>
                 </CardContent>
             </Card>
         </div>
