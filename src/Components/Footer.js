@@ -11,8 +11,8 @@ function Footer() {
             color="#49243E"
             p={1}
             width="100%"
-            position="fixed"
-            bottom={0}
+    {/*position="fixed"
+            bottom={0}*/}
         >
             <div className='flex flex-row justify-center items-center w-full'>
                 <IconButton color="inherit" target='_blank'  rel="noopener noreferrer" href='https://www.linkedin.com/in/abdullahtariq78/'>
