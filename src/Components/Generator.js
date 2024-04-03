@@ -34,7 +34,7 @@ function generatePasswords(options) {
   const passwords = [];
   for (let i = 0; i < 10; i++) {
     let password = '';
-    for (let j = 0; j < 8; j++) {
+    for (let j = 0; j < options.length; j++) {
       password += selectedCharset[Math.floor(Math.random() * selectedCharset.length)];
     }
     passwords.push({ label: password });
@@ -49,12 +49,17 @@ export default function ComboBox() {
         lowercase: false,
         numbers: false,
         symbols: false,
+        length: 8,
     });
     const [passwords, setPasswords] = useState([]);
     const [value, setValue] = React.useState(null);
 
     const handleCheckboxChange = (event) => {
         setOptions({ ...options, [event.target.name]: event.target.checked });
+    };
+
+    const handleLengthChange = (event) => {
+        setOptions({ ...options, length: event.target.value });
     };
 
     const handleGenerateClick = () => {
@@ -95,6 +100,17 @@ export default function ComboBox() {
                         <FormControlLabel
                         control={<Checkbox size="small" checked={options.symbols} onChange={handleCheckboxChange} name="symbols" />}
                         label="Include Symbols"
+                        />
+                        <TextField 
+                            type='number' 
+                            label='Password Length' 
+                            variant='standard' 
+                            size='small' 
+                            sx={{ width: 200, marginLeft: 'auto', marginRight: 'auto', marginBottom: 2}} 
+                            defaultValue='8' 
+                            inputProps={{ min: 3, max: 11 }}
+                            value={options.length} 
+                            onChange={handleLengthChange}
                         />
                         
                         <Box display="flex" justifyContent='center'>
