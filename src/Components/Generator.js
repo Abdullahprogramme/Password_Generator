@@ -12,11 +12,18 @@ import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 
-
 // Password generator function
 function generatePasswords(options) {
   // Generate a list of passwords based on the selected options
   // This is just a placeholder. Replace this with your actual password generation logic.
+  if (options.length < 3 || options.length > 11) {
+    return [{ label: 'Invalid length' }];
+  }
+
+  if (!options.uppercase && !options.lowercase && !options.numbers && !options.symbols) {
+    return [{ label: 'Select at least one option' }];
+  }
+
   const charset = {
     uppercase: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
     lowercase: 'abcdefghijklmnopqrstuvwxyz',
