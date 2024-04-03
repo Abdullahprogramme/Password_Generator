@@ -1,12 +1,13 @@
 import React from 'react';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import { blue } from '@mui/material/colors';
 
 function Header() {
   return (
-    <Box display="flex" justifyContent="center" alignItems="center" bgcolor="#FE7A36" color="#49243E" p={1} width="100%">
-      <Typography variant="h4" component="h1" gutterBottom>
-        Password Generator
+    <Box display="flex" justifyContent="center" alignItems="center" bgcolor="#FE7A36" color="#49243E" p={0} width="100%">
+      <Typography className='Header' variant="h6" sx={{ fontFamily: 'Raleway, sans-serif', color: 'cyan' }} gutterBottom>
+        Passforge - select and copy 
       </Typography>
     </Box>
   );
