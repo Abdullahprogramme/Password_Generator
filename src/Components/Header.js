@@ -2,8 +2,8 @@ import React from 'react';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { IconButton, Tooltip } from '@mui/material';
-import Brightness4Icon from '@mui/icons-material/Brightness4';
-import Brightness7Icon from '@mui/icons-material/Brightness7';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
+import LightModeIcon from '@mui/icons-material/LightMode';
 import Grid from '@mui/material/Grid';
 
 function Header({ darkMode, setDarkMode }) {
@@ -15,9 +15,9 @@ function Header({ darkMode, setDarkMode }) {
         </Typography>
       </Grid>
       <Grid item xs={1}>
-        <Tooltip title="Toggle dark mode">
+        <Tooltip {...{ title: darkMode ? 'Light Mode' : 'Dark Mode' }}>
           <IconButton color="inherit" onClick={() => setDarkMode(!darkMode)}>
-            {darkMode ? <Brightness7Icon /> : <Brightness4Icon />}
+            {darkMode ? <DarkModeIcon /> : <LightModeIcon />}
           </IconButton>
         </Tooltip>
       </Grid>
