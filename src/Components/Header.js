@@ -8,9 +8,9 @@ import Grid from '@mui/material/Grid';
 
 function Header({ darkMode, setDarkMode }) {
   return (
-    <Box display="flex" justifyContent="space-between" alignItems="center" bgcolor="#FE7A36" color="#49243E" p={0} width='100%' boxShadow={2}>
+    <Box display="flex" justifyContent="space-between" alignItems="center" bgcolor="#E0CCBE" p={0} width='100%' boxShadow={2}>
       <Grid item xs>
-        <Typography className='Header' variant="h6" sx={{ fontFamily: 'Raleway, sans-serif', color: 'cyan', marginLeft: 1 }} gutterBottom>
+        <Typography className='Header' variant="h6" sx={{ fontFamily: 'Raleway, sans-serif', color: '#3C3633', marginLeft: 1 }} gutterBottom>
           Passforge - select and copy 
         </Typography>
       </Grid>
