@@ -11,44 +11,9 @@ import RefreshIcon from '@mui/icons-material/Refresh';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
+import Alert from '@mui/material/Alert';
 
-// Password generator function
-function generatePasswords(options) {
-  // Generate a list of passwords based on the selected options
-  // This is just a placeholder. Replace this with your actual password generation logic.
-  if (options.length < 3 || options.length > 11) {
-    return [{ label: 'Invalid length' }];
-  }
 
-  if (!options.uppercase && !options.lowercase && !options.numbers && !options.symbols) {
-    return [{ label: 'Select at least one option' }];
-  }
-
-  const charset = {
-    uppercase: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
-    lowercase: 'abcdefghijklmnopqrstuvwxyz',
-    numbers: '0123456789',
-    symbols: '!@#$%^&*()',
-  };
-
-  let selectedCharset = '';
-  for (const option in options) {
-    if (options[option]) {
-      selectedCharset += charset[option];
-    }
-  }
-
-  const passwords = [];
-  for (let i = 0; i < 10; i++) {
-    let password = '';
-    for (let j = 0; j < options.length; j++) {
-      password += selectedCharset[Math.floor(Math.random() * selectedCharset.length)];
-    }
-    passwords.push({ label: password });
-  }
-
-  return passwords;
-}
 
 export default function ComboBox() {
     const [options, setOptions] = useState({
@@ -60,6 +25,7 @@ export default function ComboBox() {
     });
     const [passwords, setPasswords] = useState([]);
     const [value, setValue] = React.useState(null);
+    const [alert, setAlert] = useState({ open: false, message: '' });
 
     const handleCheckboxChange = (event) => {
         setOptions({ ...options, [event.target.name]: event.target.checked });
@@ -74,8 +40,51 @@ export default function ComboBox() {
         setPasswords(generatePasswords(options));
     };
 
+    // Password generator function
+    function generatePasswords(options) {
+        // Generate a list of passwords based on the selected options
+        // This is just a placeholder. Replace this with your actual password generation logic.
+        if (options.length < 3 || options.length > 11) {
+        // return [{ label: 'Password length must be between 3 and 11' }];
+        setAlert({ open: true, message: 'Password length must be between 3 and 11' });
+            return [];
+        }
+    
+        if (!options.uppercase && !options.lowercase && !options.numbers && !options.symbols) {
+            // return [{ label: 'Select at least one option' }];
+            setAlert({ open: true, message: 'Select at least one option' });
+            return [];
+        }
+    
+        const charset = {
+        uppercase: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+        lowercase: 'abcdefghijklmnopqrstuvwxyz',
+        numbers: '0123456789',
+        symbols: '!@#$%^&*()',
+        };
+    
+        let selectedCharset = '';
+        for (const option in options) {
+        if (options[option]) {
+            selectedCharset += charset[option];
+        }
+        }
+    
+        const passwords = [];
+        for (let i = 0; i < 10; i++) {
+        let password = '';
+        for (let j = 0; j < options.length; j++) {
+            password += selectedCharset[Math.floor(Math.random() * selectedCharset.length)];
+        }
+        passwords.push({ label: password });
+        }
+    
+        return passwords;
+    }
+
     return (
         <div>
+            {alert.open && <Alert severity="error" onClose={() => setAlert({ open: false, message: '' })}>{alert.message}</Alert>}
             <Card sx={{ 
                 position: 'sticky', // Add this line
                 top: 0,
@@ -114,7 +123,6 @@ export default function ComboBox() {
                             variant='standard' 
                             size='small' 
                             sx={{ width: 200, marginLeft: 'auto', marginRight: 'auto', marginBottom: 2}} 
-                            defaultValue='8' 
                             inputProps={{ min: 3, max: 11 }}
                             value={options.length} 
                             onChange={handleLengthChange}
