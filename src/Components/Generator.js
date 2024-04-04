@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import Card from '@mui/material/Card';
@@ -81,6 +81,18 @@ export default function ComboBox() {
     
         return passwords;
     }
+
+    useEffect(() => {
+        if (alert.open) {
+            const timer = setTimeout(() => {
+                setAlert(prevAlert => ({ ...prevAlert, open: false }));
+            }, 3000);
+    
+            return () => {
+                clearTimeout(timer);
+            };
+        }
+    }, [alert.open]);
 
     return (
         <div>
