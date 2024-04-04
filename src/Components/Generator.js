@@ -12,6 +12,7 @@ import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import Alert from '@mui/material/Alert';
+import { useTheme } from '@mui/material/styles';
 
 
 
@@ -26,6 +27,8 @@ export default function ComboBox() {
     const [passwords, setPasswords] = useState([]);
     const [value, setValue] = React.useState(null);
     const [alert, setAlert] = useState({ open: false, message: '' });
+
+    const theme = useTheme();
 
     const handleCheckboxChange = (event) => {
         setOptions({ ...options, [event.target.name]: event.target.checked });
@@ -96,17 +99,25 @@ export default function ComboBox() {
 
     return (
         <div>
-            {alert.open && <Alert severity="error" onClose={() => setAlert({ open: false, message: '' })}>{alert.message}</Alert>}
-            <Card sx={{ 
+            {alert.open && <Alert 
+                            severity="error" 
+                            onClose={() => setAlert({ open: false, message: '' })}
+                            style={{
+                            backgroundColor: theme.palette.mode === 'dark' ? '#424242' : '#A1C398',
+                            color: theme.palette.mode === 'dark' ? '#fff' : '#000'
+                            }}
+            >{alert.message}</Alert>
+            }<Card sx={{ 
                 position: 'sticky', // Add this line
                 top: 0,
                 marginBottom: 1, 
                 marginTop: 1, 
-                backgroundColor: '#A1C398', 
+                backgroundColor: theme.palette.mode === 'dark' ? '#424242' : '#A1C398',  
                 maxWidth: 300, 
                 marginLeft: 'auto', 
                 marginRight: 'auto',
                 border: '1px solid #A1C398',
+                borderColor: theme.palette.mode === 'dark' ? '#424242' : '#A1C398',
                 boxShadow: '0 2px 2px 2px rgba(0, 0, 0, .3)',
                 transition: '0.3s',
                 '&:hover': {
@@ -151,11 +162,12 @@ export default function ComboBox() {
                 top: 0,
                 marginBottom: 0, 
                 marginTop: 2, 
-                backgroundColor: '#A1C398', 
+                backgroundColor: theme.palette.mode === 'dark' ? '#424242' : '#A1C398',
                 maxWidth: 300, 
                 marginLeft: 'auto', 
                 marginRight: 'auto',
                 border: '1px solid #A1C398',
+                borderColor: theme.palette.mode === 'dark' ? '#424242' : '#A1C398',
                 boxShadow: '0 2px 2px 2px rgba(0, 0, 0, .3)',
                 transition: '0.3s',
                 '&:hover': {
@@ -176,7 +188,7 @@ export default function ComboBox() {
                                 width: 200, 
                                 marginLeft: 'auto', 
                                 marginRight: 'auto', 
-                                backgroundColor: '#789461',
+                                backgroundColor: theme.palette.mode === 'dark' ? '#222831' : '#789461',
                                 '& .MuiAutocomplete-paper': {
                                     maxHeight: 96, // Adjust this value as needed
                                     overflow: 'auto',
