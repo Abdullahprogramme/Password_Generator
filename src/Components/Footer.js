@@ -7,9 +7,9 @@ function Footer() {
             display="flex"
             justifyContent="center"
             alignItems="center"
-            bgcolor="#FE7A36"
+            bgcolor="#E0CCBE"
             color="#49243E"
-            p={1}
+            p={0}
             width="100%"
             position="fixed"
             bottom={0}
