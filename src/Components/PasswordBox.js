@@ -27,12 +27,12 @@ function PasswordBox({ passwords }) {
 
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', height: 75 }}>
+      <>
       <Box 
         sx={{ 
           display: 'flex', 
           alignItems: 'center', 
-          justifyContent: 'space-between', 
+          justifyContent: 'space-between',
           width: 200,
           height: 50, 
           padding: 1, 
@@ -56,8 +56,8 @@ function PasswordBox({ passwords }) {
         </Tooltip>
       </Box>
 
-      <Box sx={{ display: 'flex', alignItems: 'center' }}>
-          <IconButton onClick={handlePrevious} disabled={currentIndex === 0}>
+      <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <IconButton onClick={handlePrevious} disabled={currentIndex === 0}>
               <NavigateBeforeIcon />
           </IconButton>
           <Typography color='white'>{Math.min(currentIndex + 1, 10)} / {Math.min(passwords.length, 10)}</Typography>
@@ -65,7 +65,7 @@ function PasswordBox({ passwords }) {
               <NavigateNextIcon />
           </IconButton>
       </Box>
-    </Box>
+      </>
   );
 }
 
