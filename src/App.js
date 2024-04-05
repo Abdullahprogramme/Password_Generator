@@ -5,6 +5,7 @@ import Footer from "./Components/Footer";
 import { useState } from "react";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
+import Box from "@mui/material/Box";
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -12,15 +13,22 @@ function App() {
   const theme = createTheme({
     palette: {
       mode: darkMode ? 'dark' : 'light',
+      background: {
+        default: darkMode ? '#2C3531' : '#EEE2DC',
+      },
     },
   });
-
+  
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Header darkMode={darkMode} setDarkMode={setDarkMode} />
-      <Generator />
-      <Footer />
+      <Box display="flex" flexDirection="column" minHeight="100vh">
+        <Header darkMode={darkMode} setDarkMode={setDarkMode} />
+        <Generator />
+        <Box mt="auto">
+          <Footer />
+        </Box>
+      </Box>
     </ThemeProvider>
   );
 }
