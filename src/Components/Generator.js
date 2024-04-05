@@ -140,7 +140,7 @@ export default function ComboBox() {
                             variant='standard' 
                             size='small' 
                             sx={{ width: 200, marginLeft: 'auto', marginRight: 'auto', marginBottom: 2}} 
-                            inputProps={{ min: 3, max: 11 }}
+                            inputProps={{ min: 3, max: 111, style: { color: 'white' } }}
                             value={options.length} 
                             onChange={handleLengthChange}
                         />
