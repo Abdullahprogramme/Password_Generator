@@ -84,7 +84,7 @@ export default function ComboBox() {
 
 
     return (
-        <div className="mt-7">
+        <div className="mt-10">
             <Snackbar
                 open={alert.open}
                 message={alert.message}
