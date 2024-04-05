@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import TextField from '@mui/material/TextField';
-import Autocomplete from '@mui/material/Autocomplete';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -8,12 +7,12 @@ import Checkbox from '@mui/material/Checkbox';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import RefreshIcon from '@mui/icons-material/Refresh';
-import ContentCopyIcon from '@mui/icons-material/ContentCopy';
-import IconButton from '@mui/material/IconButton';
-import Tooltip from '@mui/material/Tooltip';
-import Alert from '@mui/material/Alert';
 import { useTheme } from '@mui/material/styles';
 
+import PasswordBox from './PasswordBox';
+import Snackbar from '@mui/material/Snackbar';
+import IconButton from '@mui/material/IconButton';
+import CloseIcon from '@mui/icons-material/Close';
 
 
 export default function ComboBox() {
@@ -25,7 +24,6 @@ export default function ComboBox() {
         length: 8,
     });
     const [passwords, setPasswords] = useState([]);
-    const [value, setValue] = React.useState(null);
     const [alert, setAlert] = useState({ open: false, message: '' });
 
     const theme = useTheme();
@@ -39,7 +37,6 @@ export default function ComboBox() {
     };
 
     const handleGenerateClick = () => {
-        setValue(null);
         setPasswords(generatePasswords(options));
     };
 
@@ -85,44 +82,41 @@ export default function ComboBox() {
         return passwords;
     }
 
-    useEffect(() => {
-        if (alert.open) {
-            const timer = setTimeout(() => {
-                setAlert(prevAlert => ({ ...prevAlert, open: false }));
-            }, 3000);
-    
-            return () => {
-                clearTimeout(timer);
-            };
-        }
-    }, [alert.open]);
 
     return (
-        <div>
-            {alert.open && <Alert 
-                            severity="error" 
-                            onClose={() => setAlert({ open: false, message: '' })}
-                            style={{
-                            backgroundColor: theme.palette.mode === 'dark' ? '#424242' : '#A1C398',
-                            color: theme.palette.mode === 'dark' ? '#fff' : '#000'
-                            }}
-            >{alert.message}</Alert>
-            }<Card sx={{ 
+        <div className="mt-10">
+            <Snackbar
+                open={alert.open}
+                message={alert.message}
+                autoHideDuration={null}
+                style={{
+                    backgroundColor: theme.palette.mode === 'dark' ? '#424242' : '#A1C398',
+                    color: theme.palette.mode === 'dark' ? '#fff' : '#000'
+                }}
+                action={
+                    <IconButton
+                    size="small"
+                    aria-label="close"
+                    color="inherit"
+                    onClick={() => setAlert({ open: false, message: '' })}
+                    >
+                    <CloseIcon fontSize="small" />
+                    </IconButton>
+                }/>
+            <Card sx={{ 
                 position: 'sticky', // Add this line
                 top: 0,
                 marginBottom: 1, 
                 marginTop: 1, 
-                backgroundColor: theme.palette.mode === 'dark' ? '#424242' : '#A1C398',  
-                maxWidth: 300, 
+                borderRadius: 0,
+                backgroundColor: theme.palette.mode === 'dark' ? '#2D4159' : '#78244C',  
+                maxWidth: 280, 
                 marginLeft: 'auto', 
                 marginRight: 'auto',
                 border: '1px solid #A1C398',
-                borderColor: theme.palette.mode === 'dark' ? '#424242' : '#A1C398',
-                boxShadow: '0 2px 2px 2px rgba(0, 0, 0, .3)',
-                transition: '0.3s',
-                '&:hover': {
-                    boxShadow: '0 3px 5px 4px rgba(0, 0, 0, .3)',
-                },}} variant='default'>
+                borderColor: theme.palette.mode === 'dark' ? '#2D4159' : '#78244C',
+                transition: '0.3s',}} 
+                variant='default'>
                 <CardContent sx={{ padding: 2, justifyContent: 'center', alignItems: 'center' }}>
                     <FormControlLabel
                         control={<Checkbox size="small" checked={options.uppercase} onChange={handleCheckboxChange} name="uppercase" />}
@@ -160,52 +154,20 @@ export default function ComboBox() {
             <Card sx={{ 
                 position: 'sticky',
                 top: 0,
+                borderRadius: 0,
                 marginBottom: 0, 
                 marginTop: 2, 
-                backgroundColor: theme.palette.mode === 'dark' ? '#424242' : '#A1C398',
-                maxWidth: 300, 
+                height: 125,
+                backgroundColor: theme.palette.mode === 'dark' ? '#2D4159' : '#78244C',
+                maxWidth: 280, 
                 marginLeft: 'auto', 
                 marginRight: 'auto',
                 border: '1px solid #A1C398',
-                borderColor: theme.palette.mode === 'dark' ? '#424242' : '#A1C398',
-                boxShadow: '0 2px 2px 2px rgba(0, 0, 0, .3)',
-                transition: '0.3s',
-                '&:hover': {
-                    boxShadow: '0 3px 5px 4px rgba(0, 0, 0, .3)',
-                },}} variant='default'>
+                borderColor: theme.palette.mode === 'dark' ? '#2D4159' : '#78244C',
+                transition: '0.3s',}} 
+                variant='default'>
                 <CardContent sx={{ padding: 2, justifyContent: 'center', alignItems: 'center' }}>
-                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                        <Autocomplete
-                            disablePortal={false}
-                            isOptionEqualToValue={(option, value) => option.label === value.label}
-                            id="combo-box-demo"
-                            options={passwords}
-                            value={value}
-                            onChange={(event, newValue) => {
-                                setValue(newValue);
-                            }}
-                            sx={{ 
-                                width: 200, 
-                                marginLeft: 'auto', 
-                                marginRight: 'auto', 
-                                backgroundColor: theme.palette.mode === 'dark' ? '#222831' : '#789461',
-                                '& .MuiAutocomplete-paper': {
-                                    maxHeight: 96, // Adjust this value as needed
-                                    overflow: 'auto',
-                                },
-                            }}
-                            renderInput={(params) => <TextField {...params} label="Password" />}
-                        />
-                        <Tooltip title="Copy">
-                            <IconButton
-                                onClick={() => {
-                                    navigator.clipboard.writeText(value ? value.label : '');
-                                }}
-                            >
-                                <ContentCopyIcon />
-                            </IconButton>
-                        </Tooltip>
-                    </Box>
+                    <PasswordBox passwords={passwords} />
                 </CardContent>
             </Card>
         </div>
