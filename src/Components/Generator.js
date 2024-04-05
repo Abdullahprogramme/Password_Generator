@@ -120,23 +120,23 @@ export default function ComboBox() {
                 <CardContent sx={{ padding: 2, justifyContent: 'center', alignItems: 'center' }}>
                     <FormControlLabel
                         control={<Checkbox size="small" checked={options.uppercase} onChange={handleCheckboxChange} name="uppercase" />}
-                        label="Include Uppercase Letters"
+                        label={<span style={{color: 'white'}}>Include Uppercase Letters</span>}
                         />
                         <FormControlLabel
                         control={<Checkbox size="small" checked={options.lowercase} onChange={handleCheckboxChange} name="lowercase" />}
-                        label="Include Lowercase Letters"
+                        label={<span style={{color: 'white'}}>Include Lowercase Letters</span>}
                         />
                         <FormControlLabel
                         control={<Checkbox size="small" checked={options.numbers} onChange={handleCheckboxChange} name="numbers" />}
-                        label="Include Numbers"
+                        label={<span style={{color: 'white'}}>Include Numbers</span>}
                         />
                         <FormControlLabel
                         control={<Checkbox size="small" checked={options.symbols} onChange={handleCheckboxChange} name="symbols" />}
-                        label="Include Symbols"
+                        label={<span style={{color: 'white'}}>Include Symbols</span>}
                         />
                         <TextField 
                             type='number' 
-                            label='Password Length' 
+                            label={<span style={{color: 'white'}}>Password Length</span>} 
                             variant='standard' 
                             size='small' 
                             sx={{ width: 200, marginLeft: 'auto', marginRight: 'auto', marginBottom: 2}} 
