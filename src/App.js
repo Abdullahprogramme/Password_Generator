@@ -22,7 +22,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Box display="flex" flexDirection="column" minHeight="100vh">
+      <Box display="flex" flexDirection="column" sx={{minHeight: {xs: '95vh', sm: '100vh'},}}>
         <Header darkMode={darkMode} setDarkMode={setDarkMode} />
         <Generator />
         <Box mt="auto">
