@@ -9,3 +9,15 @@
         @apply font-[Raleway];
     }
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&family=Work+Sans:wght@600&display=swap');
+
+.Header-h6.Header-h6 {
+  font-family: 'Roboto Slab', serif;
+  font-weight: 700;
+}
+
+.Header-subtitle1.Header-subtitle1 {
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 600;
+}
