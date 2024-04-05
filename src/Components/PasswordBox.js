@@ -40,7 +40,7 @@ function PasswordBox({ passwords }) {
           backgroundColor: theme.palette.mode === 'dark' ? '#2D4159' : '#78244C' 
         }}
       >
-        <Typography>
+        <Typography color='white'>
           {passwords && passwords.length > 0 ? passwords[currentIndex].label : "No options"}
         </Typography>
 
@@ -60,7 +60,7 @@ function PasswordBox({ passwords }) {
           <IconButton onClick={handlePrevious} disabled={currentIndex === 0}>
               <NavigateBeforeIcon />
           </IconButton>
-          <Typography>{Math.min(currentIndex + 1, 10)} / {Math.min(passwords.length, 10)}</Typography>
+          <Typography color='white'>{Math.min(currentIndex + 1, 10)} / {Math.min(passwords.length, 10)}</Typography>
           <IconButton onClick={handleNext} disabled={currentIndex === 9 || currentIndex === passwords.length - 1}>
               <NavigateNextIcon />
           </IconButton>
