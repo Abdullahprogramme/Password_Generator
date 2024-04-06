@@ -37,3 +37,23 @@
 .card {
   animation: float 2s ease-in-out infinite;
 }
+
+@keyframes slide_from_left {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(5%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.Header-h5.Header-h5 {
+  animation: slide_from_left 1s ease-in-out;
+}
+
+.Header-subtitle1.Header-subtitle1 {
+  animation: slide_from_left 1s ease-in-out 0.2s backwards; /* Add delay */
+}
