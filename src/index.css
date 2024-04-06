@@ -2,11 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url(https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;800;900&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;700&display=swap);
 
 @layer base {
   body *:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6):not(.Header-h6):not(.Header-subtitle1) {
-      @apply font-[Roboto];
+      @apply font-[Chakra+Petch] font-normal;
   }
 }
 
@@ -20,4 +20,20 @@
 .Header-subtitle1.Header-subtitle1 {
   font-family: 'Work Sans', sans-serif;
   font-weight: 600;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.card {
+  animation: float 2s ease-in-out infinite;
 }
