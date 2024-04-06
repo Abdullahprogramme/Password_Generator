@@ -13,7 +13,7 @@ import PasswordBox from './PasswordBox';
 import Snackbar from '@mui/material/Snackbar';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
-
+import Modal from '@mui/material/Modal';
 
 export default function ComboBox() {
     const [options, setOptions] = useState({
@@ -85,24 +85,27 @@ export default function ComboBox() {
 
     return (
         <div className="mt-10">
-            <Snackbar
-                open={alert.open}
-                message={alert.message}
-                autoHideDuration={null}
-                style={{
-                    backgroundColor: theme.palette.mode === 'dark' ? '#424242' : '#A1C398',
-                    color: theme.palette.mode === 'dark' ? '#fff' : '#000'
-                }}
-                action={
-                    <IconButton
-                    size="small"
-                    aria-label="close"
-                    color="inherit"
-                    onClick={() => setAlert({ open: false, message: '' })}
-                    >
-                    <CloseIcon fontSize="small" />
-                    </IconButton>
-                }/>
+            <Modal open={alert.open} aria-labelledby="simple-modal-title" aria-describedby="simple-modal-description">
+                <Snackbar
+                    open={alert.open}
+                    message={alert.message}
+                    autoHideDuration={null}
+                    style={{
+                        backgroundColor: theme.palette.mode === 'dark' ? '#424242' : '#A1C398',
+                        color: theme.palette.mode === 'dark' ? '#fff' : '#000'
+                    }}
+                    action={
+                        <IconButton
+                        size="small"
+                        aria-label="close"
+                        color="inherit"
+                        onClick={() => setAlert({ open: false, message: '' })}
+                        >
+                        <CloseIcon fontSize="small" />
+                        </IconButton>
+                    }/>
+            </Modal>
+
             <Card className="card" sx={{ 
                 position: 'sticky', // Add this line
                 top: 0,
