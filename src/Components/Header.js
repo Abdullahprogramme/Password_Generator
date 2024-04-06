@@ -15,7 +15,7 @@ function Header({ darkMode, setDarkMode }) {
   return (
     <Box display="flex" justifyContent="space-between" alignItems="center" p={0} width='100%' boxShadow={1}>
       <Grid item xs>
-        <Typography className='Header-h6' variant="h6" sx={{ color: theme.palette.mode === 'dark' ? '#fff' : '#3C3633', marginLeft: 1, marginBottom: 0 }} gutterBottom>
+        <Typography className='Header-h5' variant="h5" sx={{ color: theme.palette.mode === 'dark' ? '#fff' : '#3C3633', marginLeft: 1, marginBottom: 0 }} gutterBottom>
           Passforge 
         </Typography>
         <Typography className='Header-subtitle1' variant="subtitle1" sx={{ color: theme.palette.mode === 'dark' ? '#fff' : '#3C3633', marginLeft: 1, marginTop: 0 }} gutterBottom>
