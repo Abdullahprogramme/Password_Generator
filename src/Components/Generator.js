@@ -103,12 +103,12 @@ export default function ComboBox() {
                     <CloseIcon fontSize="small" />
                     </IconButton>
                 }/>
-            <Card sx={{ 
+            <Card className="card" sx={{ 
                 position: 'sticky', // Add this line
                 top: 0,
                 marginBottom: 1, 
                 marginTop: 1, 
-                borderRadius: 0,
+                borderRadius: 1,
                 backgroundColor: theme.palette.mode === 'dark' ? '#2D4159' : '#78244C',  
                 maxWidth: 280, 
                 marginLeft: 'auto', 
@@ -151,10 +151,10 @@ export default function ComboBox() {
                 </CardContent>
             </Card>
 
-            <Card sx={{ 
+            <Card className="card" sx={{ 
                 position: 'sticky',
                 top: 0,
-                borderRadius: 0,
+                borderRadius: 1,
                 marginBottom: 0, 
                 marginTop: 2, 
                 height: 125,
