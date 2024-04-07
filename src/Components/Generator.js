@@ -91,6 +91,7 @@ export default function ComboBox() {
                     message={alert.message}
                     autoHideDuration={null}
                     style={{
+                        borderRadius: 4,
                         backgroundColor: theme.palette.mode === 'dark' ? '#424242' : '#A1C398',
                         color: theme.palette.mode === 'dark' ? '#fff' : '#000'
                     }}
