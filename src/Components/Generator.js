@@ -106,7 +106,7 @@ export default function ComboBox() {
                     }/>
             </Modal>
 
-            <Card className="card" sx={{ 
+            <Card sx={{ 
                 position: 'sticky', // Add this line
                 top: 0,
                 marginBottom: 1, 
@@ -154,7 +154,7 @@ export default function ComboBox() {
                 </CardContent>
             </Card>
 
-            <Card className="card" sx={{ 
+            <Card sx={{ 
                 position: 'sticky',
                 top: 0,
                 borderRadius: 1,
