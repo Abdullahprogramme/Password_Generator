@@ -24,7 +24,7 @@ function Header({ darkMode, setDarkMode }) {
       </Grid>
       <Grid item xs={1}>
         <Tooltip {...{ title: darkMode ? 'Light Mode' : 'Dark Mode' }}>
-          <IconButton color="inherit" onClick={() => setDarkMode(!darkMode)}>
+          <IconButton className='card' color="inherit" onClick={() => setDarkMode(!darkMode)}>
             {darkMode ? <DarkModeIcon /> : <LightModeIcon />}
           </IconButton>
         </Tooltip>
