@@ -14,16 +14,16 @@ function Footer() {
         >
             <Paper elevation={3} sx={{ m: 0.7 }}>
                 <div className='flex flex-row justify-center items-center w-full'>
-                    <IconButton color="inherit" target='_blank'  rel="noopener noreferrer" href='https://www.linkedin.com/in/abdullahtariq78/'>
+                    <IconButton className='card' color="inherit" target='_blank'  rel="noopener noreferrer" href='https://www.linkedin.com/in/abdullahtariq78/'>
                         <FaLinkedin size={24} />
                     </IconButton>
-                    <IconButton color="inherit" target='_blank' rel="noopener noreferrer" href='https://www.facebook.com/abdullah.tariq.7262'>
+                    <IconButton className='card' color="inherit" target='_blank' rel="noopener noreferrer" href='https://www.facebook.com/abdullah.tariq.7262'>
                         <FaFacebook size={24} />
                     </IconButton>
-                    <IconButton color="inherit" href="https://www.instagram.com/abdullahtariq62/?next=%2F&hl=en" target="_blank" rel="noopener noreferrer">
+                    <IconButton className='card' color="inherit" href="https://www.instagram.com/abdullahtariq62/?next=%2F&hl=en" target="_blank" rel="noopener noreferrer">
                         <FaInstagram size={24} />
                     </IconButton>
-                    <IconButton color="inherit" target='blank' rel="noopener noreferrer" href='https://github.com/Abdullahprogramme'>
+                    <IconButton className='card' color="inherit" target='blank' rel="noopener noreferrer" href='https://github.com/Abdullahprogramme'>
                         <FaGithub size={24} />
                     </IconButton>
                 </div>
