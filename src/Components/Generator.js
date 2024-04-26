@@ -50,7 +50,7 @@ export default function ComboBox() {
         // This is just a placeholder. Replace this with your actual password generation logic.
         if (options.length < 3 || options.length > 11) {
         // return [{ label: 'Password length must be between 3 and 11' }];
-            setAlert({ open: true, message: 'Password length must be between 3 and 11' });
+        setAlert({ open: true, message: 'Password length must be between 3 and 11' });
             return [];
         }
     
@@ -61,26 +61,26 @@ export default function ComboBox() {
         }
     
         const charset = {
-            uppercase: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
-            lowercase: 'abcdefghijklmnopqrstuvwxyz',
-            numbers: '0123456789',
-            symbols: '!@#$%^&*()',
+        uppercase: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+        lowercase: 'abcdefghijklmnopqrstuvwxyz',
+        numbers: '0123456789',
+        symbols: '!@#$%^&*()',
         };
     
         let selectedCharset = '';
         for (const option in options) {
-            if (options[option]) {
-                selectedCharset += charset[option];
-            }
+        if (options[option]) {
+            selectedCharset += charset[option];
+        }
         }
     
         const passwords = [];
         for (let i = 0; i < 10; i++) {
-            let password = '';
-                for (let j = 0; j < options.length; j++) {
-                    password += selectedCharset[Math.floor(Math.random() * selectedCharset.length)];
-                }
-            passwords.push({ label: password });
+        let password = '';
+        for (let j = 0; j < options.length; j++) {
+            password += selectedCharset[Math.floor(Math.random() * selectedCharset.length)];
+        }
+        passwords.push({ label: password });
         }
     
         return passwords;
