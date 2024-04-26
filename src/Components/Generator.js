@@ -73,30 +73,32 @@ export default function ComboBox() {
         const generatePassword = (length, selectedCharset) => {
             let password = '';
             const charsetKeys = Object.keys(selectedCharset);
-    
-            // Ensure at least one character from each selected character set
+        
+            // Ensure at least one character from each selected character set, if it doesn't exceed the length
             charsetKeys.forEach((key) => {
-                password += selectedCharset[key][Math.floor(Math.random() * selectedCharset[key].length)];
+                if (password.length < length) {
+                    password += selectedCharset[key][Math.floor(Math.random() * selectedCharset[key].length)];
+                }
             });
-    
+        
             // Fill the rest of the password length with random characters from the entire selected character set
             const allChars = charsetKeys.reduce((acc, key) => acc + selectedCharset[key], '');
-            for (let j = password.length; j < length; j++) {
+            for (let i = password.length; i < length; i++) {
                 password += allChars[Math.floor(Math.random() * allChars.length)];
             }
-    
+        
             // Shuffle the password to ensure the characters from each character set are not grouped together
             password = password.split('').sort(() => 0.5 - Math.random()).join('');
-    
+        
             return password;
         }
-    
+        
         const passwords = [];
         for (let i = 0; i < 10; i++) {
             let password = generatePassword(options.length, selectedCharset);
             passwords.push({ label: password });
         }
-    
+        
         return passwords;
     }
 
