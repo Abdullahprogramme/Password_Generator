@@ -1,4 +1,7 @@
+// React imports
 import React, { useState } from 'react';
+
+// Material UI imports
 import TextField from '@mui/material/TextField';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -7,13 +10,14 @@ import Checkbox from '@mui/material/Checkbox';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import RefreshIcon from '@mui/icons-material/Refresh';
-import { useTheme } from '@mui/material/styles';
-
-import PasswordBox from './PasswordBox';
 import Snackbar from '@mui/material/Snackbar';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import Modal from '@mui/material/Modal';
+import { useTheme } from '@mui/material/styles';
+
+// Local imports
+import PasswordBox from './PasswordBox';
 
 export default function ComboBox() {
     const [options, setOptions] = useState({
@@ -46,7 +50,7 @@ export default function ComboBox() {
         // This is just a placeholder. Replace this with your actual password generation logic.
         if (options.length < 3 || options.length > 11) {
         // return [{ label: 'Password length must be between 3 and 11' }];
-        setAlert({ open: true, message: 'Password length must be between 3 and 11' });
+            setAlert({ open: true, message: 'Password length must be between 3 and 11' });
             return [];
         }
     
@@ -57,10 +61,10 @@ export default function ComboBox() {
         }
     
         const charset = {
-        uppercase: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
-        lowercase: 'abcdefghijklmnopqrstuvwxyz',
-        numbers: '0123456789',
-        symbols: '!@#$%^&*()',
+            uppercase: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+            lowercase: 'abcdefghijklmnopqrstuvwxyz',
+            numbers: '0123456789',
+            symbols: '!@#$%^&*()',
         };
     
         let selectedCharset = '';
@@ -70,35 +74,15 @@ export default function ComboBox() {
             }
         }
     
-        const generatePassword = (length, selectedCharset) => {
-            let password = '';
-            const charsetKeys = Object.keys(selectedCharset);
-        
-            // Ensure at least one character from each selected character set, if it doesn't exceed the length
-            charsetKeys.forEach((key) => {
-                if (password.length < length) {
-                    password += selectedCharset[key][Math.floor(Math.random() * selectedCharset[key].length)];
-                }
-            });
-        
-            // Fill the rest of the password length with random characters from the entire selected character set
-            const allChars = charsetKeys.reduce((acc, key) => acc + selectedCharset[key], '');
-            for (let i = password.length; i < length; i++) {
-                password += allChars[Math.floor(Math.random() * allChars.length)];
-            }
-        
-            // Shuffle the password to ensure the characters from each character set are not grouped together
-            password = password.split('').sort(() => 0.5 - Math.random()).join('');
-        
-            return password;
-        }
-        
         const passwords = [];
         for (let i = 0; i < 10; i++) {
-            let password = generatePassword(options.length, selectedCharset);
+            let password = '';
+                for (let j = 0; j < options.length; j++) {
+                    password += selectedCharset[Math.floor(Math.random() * selectedCharset.length)];
+                }
             passwords.push({ label: password });
         }
-        
+    
         return passwords;
     }
 
