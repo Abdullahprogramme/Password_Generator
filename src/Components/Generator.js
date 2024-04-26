@@ -81,7 +81,7 @@ export default function ComboBox() {
     
             // Fill the rest of the password length with random characters from the entire selected character set
             const allChars = charsetKeys.reduce((acc, key) => acc + selectedCharset[key], '');
-            for (let i = password.length; i < length; i++) {
+            for (let j = password.length; j < length; j++) {
                 password += allChars[Math.floor(Math.random() * allChars.length)];
             }
     
